@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "no_admin",
+        "lastname": "No_Admin",
+        "email": "no_admin@email.com",
+        "password": "$2b$12$01gvQMGzJ7vK83hC0y3RWu1bBgCPSKp3BC9KjslfNXv6fpP4MSFum",
+        "is_admin": false
+    },
+    {
+        "id": 2,
+        "name": "admin",
+        "lastname": "Admin",
+        "email": "admin@email.com",
+        "password": "$2b$12$KdnwGVCuhQzuaA2aWmYSDu8X9g3LGhBLyKrFRv3goxdoy2rxTuvyq",
+        "is_admin": true
+    },
+    {
+        "id": 3,
+        "name": "Ejemplo",
+        "lastname": "Prueba",
+        "email": "user@example.com",
+        "password": "$2b$12$7r6pBTIJIx.zS2JGv.w5zug9b74Qa2ofodX6b8Pdow1OjMci6BbJi",
+        "is_admin": false
+    },
+    {
+        "id": 4,
+        "name": "alf",
+        "lastname": "mem",
+        "email": "alfmem@email.com",
+        "password": "$2b$12$PaRibULU/9Kb2QdrA8CLFu9ipt13LRH.vSkJ6Kbw6Th4sLwOLagsy",
+        "is_admin": false
+    },
+    {
+        "id": 5,
+        "name": "a",
+        "lastname": "d",
+        "email": "admin@gmail.com",
+        "password": "$2b$12$IzcwdMgCsDJP7grUamoe5./Dap//abYKqAX7uEZCGN1FRTo5nndT.",
+        "is_admin": false
+    }
+]

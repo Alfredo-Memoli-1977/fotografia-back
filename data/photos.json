@@ -1,0 +1,189 @@
+[
+    {
+        "id": 1,
+        "title": "Dia nublado",
+        "description": "Vista urbana con cielo nublado",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/dia-nuboso.JPG",
+        "raw_url": "/images/raw/dia_nuboso.CR3",
+        "price": 15,
+        "available": true
+    },
+    {
+        "id": 2,
+        "title": "Vista con niebla",
+        "description": "Paisaje urbano con niebla",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/niebla.JPG",
+        "raw_url": "/images/raw/niebla.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 3,
+        "title": "Imagen submarina",
+        "description": "Paisaje natural submarino",
+        "category": "rural",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Agua.JPG",
+        "raw_url": "/images/raw/Agua.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 4,
+        "title": "Arrebol en Sevilla",
+        "description": "Paisaje natural",
+        "category": "rural",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Arrebol.JPG",
+        "raw_url": "/images/raw/Arrebol.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 5,
+        "title": "Atardecer en Dos Hermanas",
+        "description": "Paisaje urbano al atardecer",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Atardecer.JPG",
+        "raw_url": "/images/raw/Atardecer.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 6,
+        "title": "Vista Lateral",
+        "description": "Vista en perspectiva",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Banco-Parque.JPG",
+        "raw_url": "/images/raw/Banco-Parque.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 7,
+        "title": "Catedral de Sevilla",
+        "description": "Vista de la Catedral de Sevilla",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Catedral-Sevilla.JPG",
+        "raw_url": "/images/raw/Catedral-Sevilla.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 8,
+        "title": "Columna Romanas",
+        "description": "Vista de Columnas Romanas",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Columnas-Romanas.JPG",
+        "raw_url": "/images/raw/Columnas-Romanas.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 9,
+        "title": "Rincón con Encanto",
+        "description": "Paisaje urbano",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Esquina.JPG",
+        "raw_url": "/images/raw/Esquina.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 10,
+        "title": "Gato",
+        "description": "Gato Observando el Horizonte",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Firulay.JPG",
+        "raw_url": "/images/raw/Firulay.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 11,
+        "title": "Pequeña Flor",
+        "description": "Paisaje natural",
+        "category": "rural",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Flor.JPG",
+        "raw_url": "/images/raw/Flor.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 12,
+        "title": "Terraza urbana",
+        "description": "Jardin Urbano",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Flor-Balcon.JPG",
+        "raw_url": "/images/raw/Flor-Balcon.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 13,
+        "title": "Amanecer con Niebla Urbana",
+        "description": "Amanecer con Niebla en Dos Hermanas",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Gruas-Niebla.JPG",
+        "raw_url": "/images/raw/Gruas-Niebla.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 14,
+        "title": "Luces en Rotonda",
+        "description": "Luces Navideñas en Rotonda",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Luces.JPG",
+        "raw_url": "/images/raw/Luces.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 15,
+        "title": "La Reja del Diablo",
+        "description": "Reja con Forja Imposible",
+        "category": "urban",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/la-reja-del-diablo.JPG",
+        "raw_url": "/images/raw/la-reja-del-diablo.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 16,
+        "title": "Pasillo en Sevilla",
+        "description": "Pasaje en Sevilla",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/pasillo-urbano.JPG",
+        "raw_url": "/images/raw/pasillo-urbano.CR3",
+        "price": 20,
+        "available": true
+    },
+    {
+        "id": 17,
+        "title": "Urbanismo Cordobes",
+        "description": "Vista de Arquitectura en Cordoba",
+        "category": "urban",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Plaza-Cordoba.JPG",
+        "raw_url": "/images/raw/Plaza-Cordoba.CR3",
+        "price": 20,
+        "available": true
+    }
+]
