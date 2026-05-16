@@ -17,6 +17,7 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://192.168.1.135:5173",
+        "https://fotoemocional.netlify.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
