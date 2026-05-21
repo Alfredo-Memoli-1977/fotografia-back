@@ -25,8 +25,8 @@
     },
     {
         "id": 4,
-        "name": "alf",
-        "lastname": "mem",
+        "name": "Alfredo",
+        "lastname": "Memoli",
         "email": "alfmem@email.com",
         "password": "$2b$12$PaRibULU/9Kb2QdrA8CLFu9ipt13LRH.vSkJ6Kbw6Th4sLwOLagsy",
         "is_admin": false

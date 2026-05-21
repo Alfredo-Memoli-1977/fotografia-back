@@ -15,6 +15,13 @@ class UserCreate(BaseModel):
     email: EmailStr
     password: str
 
+class UserUpdate(BaseModel):
+    id: int 
+    name: str | None = None
+    lastname: str | None = None
+    email: EmailStr | None = None
+    is_admin: bool | None = None
+
 
 
 
@@ -37,7 +44,26 @@ def get_users(admin = Depends(get_current_admin)):
     }
     for usr in users # user acá es cada elemento del objeto no el user de arriba
 ]
+
+# @router.get("/all_users")
+# def get_all_users(admin = Depends(get_current_admin)):
+
+#     users=load_users()
+#     if not users:
+#         return {"message": "No se encontraron usuarios"}
     
+#     all_users= [
+#         {
+#         "id": usr["id"],
+#         "name":usr["name"],
+#         "lastname":usr["lastname"],
+#         "email": usr["email"],
+#         "is_admin": usr.get("is_admin", False)
+#     }
+#     for usr in users
+#     ]
+    
+#     return all_users
 
 
 @router.post("")
@@ -83,3 +109,27 @@ def create_user(user: UserCreate):
         },
         "token": token
     }
+
+@router.patch("")
+def update_users(users_upate:list[UserUpdate],admin = Depends(get_current_admin)):
+    users = load_users()
+    for user in users_upate:
+        print(user)
+        for usr in users:
+            if(usr["id"]==user.id):
+                if(user.name!=None):
+                    usr["name"]=user.name
+                if(user.lastname!=None):
+                    usr["lastname"]=user.lastname
+                if(user.email!=None):
+                    usr["email"]=user.email
+                if(user.is_admin is not None):
+                    usr["is_admin"]=user.is_admin
+                # if(user.password!=None):
+                #     usr["password"]=user.name
+    try:
+        save_users(users)
+        return {"success": True}
+    except  Exception as e:
+        return {"success": False, "error": str(e)}
+    
