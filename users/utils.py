@@ -12,3 +12,5 @@ def load_users():
 def save_users(users):
     with open(DATA_PATH, "w", encoding="utf-8") as file:
         json.dump(users, file, indent=4, ensure_ascii=False)
+
+        
