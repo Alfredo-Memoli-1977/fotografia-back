@@ -18,7 +18,7 @@
         "orientation": "landscape",
         "preview_url": "/images/preview/niebla.JPG",
         "raw_url": "/images/raw/niebla.CR3",
-        "price": 20,
+        "price": 20.0,
         "available": true
     },
     {
@@ -40,7 +40,7 @@
         "orientation": "landscape",
         "preview_url": "/images/preview/Arrebol.JPG",
         "raw_url": "/images/raw/Arrebol.CR3",
-        "price": 20,
+        "price": 20.0,
         "available": true
     },
     {
@@ -73,8 +73,8 @@
         "orientation": "landscape",
         "preview_url": "/images/preview/Catedral-Sevilla.JPG",
         "raw_url": "/images/raw/Catedral-Sevilla.CR3",
-        "price": 20,
-        "available": true
+        "price": 20.0,
+        "available": false
     },
     {
         "id": 8,
@@ -101,12 +101,12 @@
     {
         "id": 10,
         "title": "Gato",
-        "description": "Gato Observando el Horizonte",
+        "description": "Gato Observando El Horizonte",
         "category": "urban",
         "orientation": "landscape",
         "preview_url": "/images/preview/Firulay.JPG",
         "raw_url": "/images/raw/Firulay.CR3",
-        "price": 20,
+        "price": 20.0,
         "available": true
     },
     {
@@ -117,8 +117,8 @@
         "orientation": "landscape",
         "preview_url": "/images/preview/Flor.JPG",
         "raw_url": "/images/raw/Flor.CR3",
-        "price": 20,
-        "available": true
+        "price": 20.0,
+        "available": false
     },
     {
         "id": 12,
@@ -139,8 +139,8 @@
         "orientation": "landscape",
         "preview_url": "/images/preview/Gruas-Niebla.JPG",
         "raw_url": "/images/raw/Gruas-Niebla.CR3",
-        "price": 20,
-        "available": true
+        "price": 20.0,
+        "available": false
     },
     {
         "id": 14,

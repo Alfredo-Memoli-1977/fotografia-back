@@ -1,15 +1,25 @@
 from fastapi import APIRouter, Query
 from typing import Literal
-import json
+from pydantic import BaseModel
 from pathlib import Path
+from photos.utils import load_photos, update_photos
 
 router = APIRouter()
 
 DATA_PATH = Path("data/photos.json")
 
-def load_photos():
-    with open(DATA_PATH, "r", encoding="utf-8") as file:
-        return json.load(file)
+class update_image(BaseModel):
+    
+        id: int 
+        title: str
+        description: str
+        category: str
+        orientation: str
+        preview_url: str
+        raw_url: str
+        price: float
+        available: bool
+    
 
 @router.get("/photos")
 def get_photos(
@@ -37,3 +47,25 @@ def get_photos(
         result = [p for p in result if q.strip().lower() in p["description"].lower()]
 
     return result
+
+@router.patch("/photos")
+def uploadPhotos(photo:update_image):
+    try:
+        all_photos:update_image=load_photos()
+        aux=[]
+        for all_photo in all_photos:
+            if all_photo["id"]!=photo.id:
+                aux.append(all_photo)
+            else:
+                new_photo = photo.model_dump()
+                new_photo["preview_url"] = all_photo["preview_url"]
+                new_photo["raw_url"] = all_photo["raw_url"]
+                aux.append(new_photo)
+                            
+                
+        update_photos(aux)
+        return {"success": True}
+    except  Exception as e:
+        return {"success": False, "error": str(e)}
+    
+
