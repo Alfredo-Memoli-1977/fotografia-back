@@ -207,16 +207,5 @@
         "raw_url": "/images/raw/Captura de pantalla 2025-10-02 201433.raw",
         "price": 0,
         "available": false
-    },
-    {
-        "id": 20,
-        "title": "Captura de pantalla 2025-10-03 235912",
-        "description": "",
-        "category": "",
-        "orientation": "portrait",
-        "preview_url": "/images/preview/Captura de pantalla 2025-10-03 235912.png",
-        "raw_url": "/images/raw/Captura de pantalla 2025-10-03 235912.cr2",
-        "price": 0.0,
-        "available": false
     }
 ]
