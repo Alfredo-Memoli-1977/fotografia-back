@@ -118,7 +118,7 @@
         "preview_url": "/images/preview/Flor.JPG",
         "raw_url": "/images/raw/Flor.CR3",
         "price": 20.0,
-        "available": false
+        "available": true
     },
     {
         "id": 12,
@@ -185,5 +185,38 @@
         "raw_url": "/images/raw/Plaza-Cordoba.CR3",
         "price": 20,
         "available": true
+    },
+    {
+        "id": 18,
+        "title": "Captura de pantalla 2025-10-02 190407",
+        "description": "",
+        "category": "",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Captura de pantalla 2025-10-02 190407.png",
+        "raw_url": "/images/raw/Captura de pantalla 2025-10-02 190407.raw",
+        "price": 0,
+        "available": false
+    },
+    {
+        "id": 19,
+        "title": "Captura de pantalla 2025-10-02 201433",
+        "description": "",
+        "category": "",
+        "orientation": "landscape",
+        "preview_url": "/images/preview/Captura de pantalla 2025-10-02 201433.png",
+        "raw_url": "/images/raw/Captura de pantalla 2025-10-02 201433.raw",
+        "price": 0,
+        "available": false
+    },
+    {
+        "id": 20,
+        "title": "Captura de pantalla 2025-10-03 235912",
+        "description": "",
+        "category": "",
+        "orientation": "portrait",
+        "preview_url": "/images/preview/Captura de pantalla 2025-10-03 235912.png",
+        "raw_url": "/images/raw/Captura de pantalla 2025-10-03 235912.cr2",
+        "price": 0.0,
+        "available": false
     }
 ]

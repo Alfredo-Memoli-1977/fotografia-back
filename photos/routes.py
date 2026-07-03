@@ -1,8 +1,8 @@
-from fastapi import APIRouter, Query
+from fastapi import APIRouter, File, Query, UploadFile
 from typing import Literal
 from pydantic import BaseModel
 from pathlib import Path
-from photos.utils import load_photos, update_photos
+from photos.utils import load_photos, update_photos, upload_new_photos
 
 router = APIRouter()
 
@@ -49,7 +49,7 @@ def get_photos(
     return result
 
 @router.patch("/photos")
-def uploadPhotos(photo:update_image):
+def update_Photos(photo:update_image):
     try:
         all_photos:update_image=load_photos()
         aux=[]
@@ -68,4 +68,47 @@ def uploadPhotos(photo:update_image):
     except  Exception as e:
         return {"success": False, "error": str(e)}
     
+@router.post("/photos")
+def upload_photos(photos:list[UploadFile]=File(...)):
+    all_photos=load_photos()
+    new_id=0
+    for all_photo in all_photos:
+        for photo in photos:
+            if photo.filename.lower().rsplit(".", 1)[0] == all_photo["title"].lower():
+                return {"success": False, "error": "Foto duplicada"}
+
+        if(new_id<all_photo["id"]):
+            new_id=all_photo["id"]
+        
+    try:
+        for photo in photos:
+            filename = photo.filename.lower()
+            raw_filename=""
+            for raw_photos in photos:
+                if raw_photos.filename.lower()!=filename and raw_photos.filename.lower().rsplit(".", 1)[0]==filename.rsplit(".", 1)[0]:
+                    raw_filename=raw_photos.filename
+
+
+            if filename.endswith((".jpg", ".jpeg", ".png", ".webp")):
+                
+                new_id+=1
+                new_photo = {
+                    "id": new_id,
+                    "title": photo.filename.rsplit(".", 1)[0],
+                    "description": "",
+                    "category": "",
+                    "orientation": "landscape",
+                    "preview_url": f"/images/preview/{photo.filename}",
+                    "raw_url": f"/images/raw/{raw_filename}",
+                    "price": 0,
+                    "available": False
+                }
+                all_photos.append(new_photo)
+           
+        update_photos(all_photos)
+        
+        upload_new_photos(photos)
+        return {"success": True}
+    except  Exception as e:
+        return {"success": False, "error": str(e)}
 
