@@ -10,6 +10,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 ALGORITHM = os.getenv("ALGORITHM")
 ACCESS_TOKEN_EXPIRE_MINUTES = int(os.getenv("ACCESS_TOKEN_EXPIRE_MINUTES"))
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
+ACCESS_TEMP_TOKEN_EXPIRE_MINUTES = int(
+    os.getenv("ACCESS_TEMP_TOKEN_EXPIRE_MINUTES")
+)
 
 def create_token(data: dict):
     expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
@@ -25,6 +28,27 @@ def verify_token(token: str):
     except JWTError:
         raise HTTPException(status_code=401, detail="Token inválido")
 
+def create_temp_token(data:dict):
+    expire = datetime.now(timezone.utc) + timedelta(minutes=ACCESS_TEMP_TOKEN_EXPIRE_MINUTES)
+    payload = data.copy()
+    payload.update({"exp": expire, "type":"temp"})
+
+    return jwt.encode(payload, SECRET_KEY, algorithm=ALGORITHM)
+
+def verify_temp_token(token: str):
+    try:
+        payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
+
+        if payload.get("type") != "temp":
+            raise HTTPException(
+                status_code=401,
+                detail="Token temporal inválido"
+            )
+
+        return payload
+
+    except JWTError:
+        raise HTTPException(status_code=401, detail="Token temporal inválido")
 def check_password(password: str):
     if len(password) < 8:
         return False

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException,Depends
 from pydantic import BaseModel, EmailStr
 from passlib.context import CryptContext
-from auth.utils import create_token, check_password
-from auth.dependencies import get_current_admin
+from auth.utils import create_temp_token, create_token, check_password, verify_temp_token
+from auth.dependencies import get_current_admin, get_current_user
 from users.utils import load_users, save_users
 
 router = APIRouter(prefix="/users", tags=["Users"])
@@ -22,7 +22,8 @@ class UserUpdate(BaseModel):
     email: EmailStr | None = None
     is_admin: bool | None = None
 
-
+class TempToken(BaseModel):
+    token: str
 
 
 @router.get("")
@@ -132,3 +133,37 @@ def update_users(users_update:list[UserUpdate],admin = Depends(get_current_admin
         return {"success": False, "error": str(e)}
     
 
+@router.get("/temporary_token")
+def temporary_token(user=Depends(get_current_user)):
+    return create_temp_token({
+        "sub": str(user["id"]),
+        "email": user["email"]
+    })
+
+@router.post("/login-with-temp-token")
+def login_with_temp_token(data: TempToken):
+    payload = verify_temp_token(data.token)
+
+    user_id = payload.get("sub")
+
+    users = load_users()
+    user = next((u for u in users if str(u["id"]) == user_id), None)
+
+    if not user:
+        raise HTTPException(status_code=404, detail="Usuario no encontrado")
+
+    new_token = create_token({
+        "sub": str(user["id"]),
+        "email": user["email"]
+    })
+
+    return {
+        "user": {
+            "id": user["id"],
+            "name": user["name"],
+            "lastname": user["lastname"],
+            "email": user["email"],
+            "is_admin": user.get("is_admin", False)
+        },
+        "token": new_token
+    }

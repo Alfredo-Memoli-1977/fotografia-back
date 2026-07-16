@@ -71,20 +71,32 @@ def update_Photos(photo:update_image):
 @router.post("/photos")
 def upload_photos(photos:list[UploadFile]=File(...)):
     all_photos=load_photos()
+    aux_photos=[]
+    duplicates=[]
     new_id=0
     for all_photo in all_photos:
         for photo in photos:
             if photo.filename.lower().rsplit(".", 1)[0] == all_photo["title"].lower():
-                return {"success": False, "error": "Foto duplicada"}
+                # return {"success": False, "error": "Foto duplicada"}
+                duplicates.append(photo.filename)
 
         if(new_id<all_photo["id"]):
             new_id=all_photo["id"]
+
+    for photo in photos:
+        if photo.filename in duplicates:
+            continue
+
+        aux_photos.append(photo)
+
+    
+
         
     try:
-        for photo in photos:
+        for photo in aux_photos:
             filename = photo.filename.lower()
             raw_filename=""
-            for raw_photos in photos:
+            for raw_photos in aux_photos:
                 if raw_photos.filename.lower()!=filename and raw_photos.filename.lower().rsplit(".", 1)[0]==filename.rsplit(".", 1)[0]:
                     raw_filename=raw_photos.filename
 
@@ -107,7 +119,13 @@ def upload_photos(photos:list[UploadFile]=File(...)):
            
         update_photos(all_photos)
         
-        upload_new_photos(photos)
+        upload_new_photos(aux_photos)
+        if duplicates:
+            return {
+                "success": False,
+                "error": f"Fotos duplicadas: {len(duplicates)}. Subidas: {len(photos)-len(duplicates)}",
+                "duplicates": duplicates,
+            }
         return {"success": True}
     except  Exception as e:
         return {"success": False, "error": str(e)}
