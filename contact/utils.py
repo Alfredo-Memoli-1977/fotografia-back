@@ -1,8 +1,7 @@
 import os
 from dotenv import load_dotenv
-from email.message import EmailMessage
+import resend
 from .schemas import ContactMsg
-import smtplib
 from pathlib import Path
 
 load_dotenv()
@@ -21,48 +20,65 @@ def send_contact_msg(data:ContactMsg):
     html = html.replace("{{message}}", data.message)
     html = html.replace("{{logo_cid}}", "logo")
 
-    msg = EmailMessage()
-    sFrom = os.getenv("MAIL_USERNAME")
-    sPassword = os.getenv("MAIL_PASSWORD")
-    sTo = os.getenv("MAIL_TO")
-    sSMTPServer = os.getenv("MAIL_HOST")
-    nPuerto = int(os.getenv("MAIL_PORT"))
+    logo = logo_path.read_bytes()
 
-    sAsunto = data.subject
-    sCuerpo = html
+    attachment: resend.Attachment = {
+        "content": list(logo),
+        "filename": "fotoEmocionalSF.png",
+        "content_id": "logo",
+    }
 
-    msg["From"] = sFrom
-    msg["To"]=sTo
-    msg["Subject"] = sAsunto
+    msg={
+        "from":os.getenv("RESEND_FROM"),
+        "to": os.getenv("MAIL_TO"),
+        "subject":data.subject,
+        "html":html,
+        "attachments": [attachment],
+    }
+    resend.api_key = os.getenv("RESEND_API_KEY")
+
+    resend.Emails.send(msg)
+
+    return {"success": True}
+    # msg = EmailMessage()
+    # sFrom = os.getenv("MAIL_USERNAME")
+    # sPassword = os.getenv("MAIL_PASSWORD")
+    # sTo = os.getenv("MAIL_TO")
+    # sSMTPServer = os.getenv("MAIL_HOST")
+    # nPuerto = int(os.getenv("MAIL_PORT"))
+
+    # sAsunto = data.subject
+    # sCuerpo = html
+
+    # msg["From"] = sFrom
+    # msg["To"]=sTo
+    # msg["Subject"] = sAsunto
     
-    msg.set_content("Tu cliente de correo no soporta HTML.")
-    msg.add_alternative(sCuerpo, subtype="html")
+    # msg.set_content("Tu cliente de correo no soporta HTML.")
+    # msg.add_alternative(sCuerpo, subtype="html")
 
-    with open(logo_path, "rb") as logo_file:
-        logo_data = logo_file.read()
+    # with open(logo_path, "rb") as logo_file:
+    #     logo_data = logo_file.read()
 
-    msg.get_payload()[1].add_related(
-        logo_data,
-        maintype="image",
-        subtype="png",
-        cid="<logo>",
-    )
+    # msg.get_payload()[1].add_related(
+    #     logo_data,
+    #     maintype="image",
+    #     subtype="png",
+    #     cid="<logo>",
+    # )
 
-    email = smtplib.SMTP(sSMTPServer, nPuerto)
+    # email = smtplib.SMTP(sSMTPServer, nPuerto)
 
-    try:
-        email.starttls()
-        email.login(sFrom, sPassword)
-        email.send_message(msg)
-        return {"success": True}
+    # try:
+    #     email.starttls()
+    #     email.login(sFrom, sPassword)
+    #     email.send_message(msg)
+    #     return {"success": True}
 
-    except Exception:
-        return {"success": False}
+    # except Exception:
+    #     return {"success": False}
 
-    finally:
-        email.quit()
+    # finally:
+    #     email.quit()
 
-    '''html = template_path.read_text(encoding="utf-8")
-
-html = html.replace("{{name}}", data.name)
-html = html.replace("{{message}}", data.message)'''
+    
