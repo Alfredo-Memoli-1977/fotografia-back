@@ -5,12 +5,14 @@ from fastapi.middleware.cors import CORSMiddleware
 from photos.routes import router as photos_router
 from users.routes import router as users_router
 from auth.routes import router as auth_router
+from contact.route import router as contact_router
 
 app = FastAPI()
 
 app.include_router(photos_router)
 app.include_router(users_router)
 app.include_router(auth_router)
+app.include_router(contact_router)
 
 app.add_middleware(
     CORSMiddleware,
